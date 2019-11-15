@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lhci": "lhci upload --serverBaseUrl=http://localhost:9001 --token=556a1c76-891d-452f-a940-1c8543ef55c2"
   },
   "dependencies": {
     "@vuex-orm/core": "^0.33.0",
@@ -31,7 +32,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

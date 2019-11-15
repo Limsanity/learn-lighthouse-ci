@@ -33,6 +33,7 @@ export default {
     ]
 
     Post.insert({ data: posts })
+    console.log(123)
   }
 }
 </script>
