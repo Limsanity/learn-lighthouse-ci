@@ -1,17 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <article v-for="post in posts" :key="post.id">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.body }}</p>
+      <p>Author: {{ post.author.name }}</p>
+    </article>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Post from '@/store/models/post'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  computed: {
+    posts() {
+      return Post.query().with('author').get()
+    }
+  },
+  created() {
+    const posts = [
+      {
+        id: 1,
+        title: 'Hello world',
+        body: 'Some awesome body...',
+        author: {
+          id: 1,
+          name: 'John Doe',
+          email: '798607646@qq.com'
+        }
+      }
+    ]
+
+    Post.insert({ data: posts })
   }
 }
 </script>
